@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LEDc</string>
+    <string name="description_color_circle">rgb color circle</string>
 </resources>
