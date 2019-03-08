@@ -68,19 +68,23 @@
                     android:id="@+id/colorDisplayInside"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:contentDescription="display actual color inside"/>
 
             <ImageView
                     android:id="@+id/colorDisplayOutside"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:contentDescription="display actual color outside"/>
 
             <ImageView
                     android:id="@+id/colorDisplayAll"
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:contentDescription="display actual color for all"/>
+
         </LinearLayout>
 
         <LinearLayout
