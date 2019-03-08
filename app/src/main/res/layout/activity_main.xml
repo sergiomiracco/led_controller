@@ -149,6 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="12dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -166,8 +167,6 @@
                     android:id="@+id/flashspeed"
                     android:layout_height="wrap_content"
                     android:layout_width="0px"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_weight="2" />
 
         </LinearLayout>
@@ -177,6 +176,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
             <TextView
@@ -184,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="RAINBOW" />
+
 
             <Switch
                     android:id="@+id/rainbow_switch"
@@ -194,8 +195,6 @@
                     android:id="@+id/rainbowspeed"
                     android:layout_height="wrap_content"
                     android:layout_width="0px"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_weight="2"/>
         </LinearLayout>
 
