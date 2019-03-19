@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
         <RadioGroup
-                    android:id="@+id/radioGroup1"
+                    android:id="@+id/channel_radio_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
