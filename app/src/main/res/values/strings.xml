@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">LEDc</string>
     <string name="description_color_circle">rgb color circle</string>
+    <string name="cd_rgb_circle">rgb circle</string>
+    <string name="hint_rgb">R G B</string>
+    <string name="channel_inside_radio_label">inside</string>
+    <string name="channel_outside_radio_label">outside</string>
+    <string name="channel_all_radio_label">all</string>
+    <string name="shutter_function_label">shutter:</string>
 </resources>
