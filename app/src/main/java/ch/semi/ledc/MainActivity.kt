@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
         when(v) {
             rgb_color_circle -> {
                 when(event?.action){
-                    MotionEvent.ACTION_DOWN -> {
+                    MotionEvent.ACTION_MOVE, MotionEvent.ACTION_DOWN -> {
 
                         val inverse = Matrix()
                         (v as ImageView).imageMatrix.invert(inverse)
