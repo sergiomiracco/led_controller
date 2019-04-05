@@ -17,13 +17,15 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.IllegalArgumentException
+import kotlin.math.floor
+import kotlin.math.pow
+import kotlin.math.sqrt
 
-class MainActivity : AppCompatActivity(), View.OnTouchListener {
+class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClickListener {
 
     private val TAG : String = "COLOR_KOBOLD_LOG"
 
-    private var mCurrentColor: Color = Color.valueOf(Color.BLACK)
-
+    private var mCurrentColor = Color.BLACK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +34,20 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
 
         rgb_color_circle.setOnTouchListener(this)
 
+        color_btn_1.setOnLongClickListener(this)
+        color_btn_2.setOnLongClickListener(this)
+        color_btn_3.setOnLongClickListener(this)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
-
-
         return super.onCreateOptionsMenu(menu)
 
+    }
+
+    override fun onLongClick(v: View?): Boolean {
+        v?.setBackgroundColor(mCurrentColor)
+        return true
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -54,15 +62,33 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
                         val touchLocation = floatArrayOf(event.x, event.y)
                         inverse.mapPoints(touchLocation)
 
-                        val x = touchLocation[0].toInt()
-                        val y = touchLocation[1].toInt()
+                        val rawX = touchLocation[0]
+                        val rawY = touchLocation[1]
 
-                        Log.d(TAG, "touching at x: $x , y: $y")
+                        //touch outside of drawable bounds not considered
+                        if(rawX > 0 && rawX < rgb_color_circle.width && rawY > 0 && rawY < rgb_color_circle.height) {
 
-                        val pixel = (rgb_color_circle.drawable as BitmapDrawable).bitmap.getPixel(x, y)
+                            val circleCenter = floatArrayOf((v.width / 2).toFloat(), (v.height / 2).toFloat())
+                            inverse.mapPoints(circleCenter)
 
-                        updateColor(pixel)
+                            val ccX = rawX - circleCenter[0]
+                            val ccY = rawY - circleCenter[1]
 
+                            val r = sqrt((ccX * ccX) + (ccY * ccY))
+
+                            //touch outside of circle not considered
+                            if (r < (rgb_color_circle.height / 2)-4) { //4 pixel margin for blurred edge
+
+                                val x = floor(rawX).toInt()
+                                val y = floor(rawY).toInt()
+
+                                Log.d(TAG, "touching at x: $x , y: $y")
+
+                                val pixel = (rgb_color_circle.drawable as BitmapDrawable).bitmap.getPixel(x, y)
+
+                                updateColor(pixel)
+                            }
+                        }
                     }
                 }
             }
@@ -73,6 +99,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
 
     private fun updateColor(color: Int){
 
+        mCurrentColor = color
         val rgbText = getTextFromColor(color)
         when(channel_radio_group.checkedRadioButtonId) {
             inside_radio.id -> {
