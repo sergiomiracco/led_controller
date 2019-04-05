@@ -30,11 +30,6 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
 
         setContentView(R.layout.activity_main)
 
-        val _channels: RadioGroup = channel_radio_group
-        val _chInside: RadioButton = inside_radio
-        val _chOutside: RadioButton = outside_radio
-        val _chAll: RadioButton = all_radio
-
         rgb_color_circle.setOnTouchListener(this)
 
     }
@@ -66,11 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
 
                         val pixel = (rgb_color_circle.drawable as BitmapDrawable).bitmap.getPixel(x, y)
 
-                        color_display_all.setBackgroundColor(pixel)
-
-
-
- //                       updateColor(Color.red(pixel), Color.green(pixel), Color.blue(pixel))
+                        updateColor(pixel)
 
                     }
                 }
@@ -80,10 +71,35 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener {
         return true
     }
 
-    fun updateColor(r: Int, g: Int, b: Int){
+    private fun updateColor(color: Int){
 
+        val rgbText = getTextFromColor(color)
+        when(channel_radio_group.checkedRadioButtonId) {
+            inside_radio.id -> {
+                color_display_inside.setBackgroundColor(color)
+                rgbval_inside.text = rgbText
+            }
+            outside_radio.id -> {
+                color_display_outside.setBackgroundColor(color)
+                rgbval_outside.text = rgbText
+            }
+            all_radio.id -> {
+                color_display_all.setBackgroundColor(color)
+                rgbval_both.text = rgbText
+            }
+        }
+        val idName = resources.getResourceEntryName(channel_radio_group.checkedRadioButtonId)
+        Log.i(TAG, "$rgbText @$idName")
 
-        Log.d(TAG, "red: $r; green: $g; blue: $b;")
+    }
+
+    private fun getTextFromColor(color: Int) : String {
+
+        val r = Color.red(color)
+        val g = Color.green(color)
+        val b = Color.blue(color)
+
+        return "R:$r G:$g B:$b"
 
     }
 
