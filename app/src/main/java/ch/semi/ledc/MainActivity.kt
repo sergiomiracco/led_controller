@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import android.view.Display
 import android.view.Menu
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -21,7 +23,7 @@ import kotlin.math.floor
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClickListener {
+class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClickListener, View.OnClickListener {
 
     private val TAG : String = "COLOR_KOBOLD_LOG"
 
@@ -35,14 +37,26 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClick
         rgb_color_circle.setOnTouchListener(this)
 
         color_btn_1.setOnLongClickListener(this)
+        color_btn_1.setOnClickListener(this)
         color_btn_2.setOnLongClickListener(this)
+        color_btn_2.setOnClickListener(this)
         color_btn_3.setOnLongClickListener(this)
+        color_btn_3.setOnClickListener(this)
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         return super.onCreateOptionsMenu(menu)
 
+    }
+
+    override fun onClick(v: View?) {
+        when(v) {
+            color_btn_1, color_btn_2, color_btn_3 -> {
+                val background = v?.background as ColorDrawable
+                updateColor(background.color)
+            }
+        }
     }
 
     override fun onLongClick(v: View?): Boolean {
@@ -101,6 +115,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClick
 
         mCurrentColor = color
         val rgbText = getTextFromColor(color)
+
         when(channel_radio_group.checkedRadioButtonId) {
             inside_radio.id -> {
                 color_display_inside.setBackgroundColor(color)
@@ -115,6 +130,7 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClick
                 rgbval_both.text = rgbText
             }
         }
+
         val idName = resources.getResourceEntryName(channel_radio_group.checkedRadioButtonId)
         Log.i(TAG, "$rgbText @$idName")
 
@@ -133,3 +149,4 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClick
 
 
 }
+
