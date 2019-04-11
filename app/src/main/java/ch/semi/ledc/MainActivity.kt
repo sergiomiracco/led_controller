@@ -9,10 +9,7 @@ import android.graphics.drawable.ColorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Display
-import android.view.Menu
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.RadioButton
@@ -46,8 +43,22 @@ class MainActivity : AppCompatActivity(), View.OnTouchListener, View.OnLongClick
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.options_menu, menu)
+
         return super.onCreateOptionsMenu(menu)
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId) {
+            R.id.opt_menu_settings -> {
+
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onClick(v: View?) {

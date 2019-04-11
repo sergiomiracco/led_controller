@@ -7,4 +7,5 @@
     <string name="channel_outside_radio_label">outside</string>
     <string name="channel_all_radio_label">all</string>
     <string name="shutter_function_label">shutter:</string>
+    <string name="settings">Settings</string>
 </resources>
