@@ -7,6 +7,4 @@
             app:title="Enable message notifications"/>
 
 
-
-
 </androidx.preference.PreferenceScreen>

@@ -8,4 +8,7 @@
     <string name="channel_all_radio_label">all</string>
     <string name="shutter_function_label">shutter:</string>
     <string name="settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

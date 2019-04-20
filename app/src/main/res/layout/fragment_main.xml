@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+            android:id="@+id/rgb_color_circle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/rgb_circle"
+            android:contentDescription="@string/cd_rgb_circle"/>
+
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <RadioGroup
+                android:id="@+id/channel_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+            <RadioButton
+                    android:id="@+id/inside_radio"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/channel_inside_radio_label"/>
+
+            <RadioButton
+                    android:id="@+id/outside_radio"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/channel_outside_radio_label"/>
+
+            <RadioButton
+                    android:id="@+id/all_radio"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/channel_all_radio_label"/>
+
+        </RadioGroup>
+
+        <TableRow>
+            <View
+                    android:id="@+id/color_display_inside"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="8dp"/>
+            <View
+                    android:id="@+id/color_display_outside"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="8dp"/>
+            <View
+                    android:id="@+id/color_display_all"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="8dp"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                    android:id="@+id/rgbval_inside"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_rgb"
+                    android:gravity="center"/>
+
+            <TextView
+                    android:id="@+id/rgbval_outside"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_rgb"
+                    android:gravity="center"/>
+
+            <TextView
+                    android:id="@+id/rgbval_both"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_rgb"
+                    android:gravity="center"/>
+
+        </TableRow>
+
+        <TableRow
+                android:layout_margin="10dp"
+                style="?android:attr/buttonBarStyle">
+
+            <Button
+                    android:id="@+id/color_btn_1"
+                    android:layout_height="80dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
+            />
+            <Button
+                    android:id="@+id/color_btn_2"
+                    android:layout_height="80dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
+            />
+            <Button
+                    android:id="@+id/color_btn_3"
+                    android:layout_height="80dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
+            />
+
+        </TableRow>
+
+        <TableRow
+                android:layout_margin="10dp"
+                android:gravity="center_vertical">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="true"
+                    android:text="@string/shutter_function_label"/>
+
+            <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            <SeekBar
+                    android:id="@+id/mode_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+            />
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
