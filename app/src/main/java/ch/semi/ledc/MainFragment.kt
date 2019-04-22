@@ -24,15 +24,7 @@ import kotlin.math.sqrt
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [MainFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
+
 class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener {
 
     // TODO: Rename and change types of parameters
@@ -43,7 +35,24 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
     private fun getTAG(): String { return (activity as MainActivity).getTAG() }
 
     override fun onLongClick(v: View?): Boolean {
-        //TODO: v?.setBackgroundColor(mCurrentColor)
+
+        val activeId = channel_radio_group.checkedRadioButtonId
+        var bg: ColorDrawable? = null
+
+        when(activeId){
+            inside_radio.id -> {
+                bg = color_display_inside.background as ColorDrawable
+            }
+            outside_radio.id -> {
+                bg = color_display_outside.background as ColorDrawable
+            }
+            all_radio.id -> {
+                bg = color_display_all.background as ColorDrawable
+            }
+        }
+        if (bg != null) {
+            v?.setBackgroundColor(bg.color)
+        }
         return true
     }
 
@@ -162,7 +171,7 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
                                 val y = floor(touchLocation[1]).toInt()
 
                                 val pixel = (rgb_color_circle.drawable as BitmapDrawable).bitmap.getPixel(x, y)
-                                //TODO: updateColor(pixel)
+                                updateColor(pixel)
 
                             }
 
