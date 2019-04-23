@@ -48,15 +48,12 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.frag_container, SettingsFragment())
+                    .addToBackStack(null)
                     .commit()
                 supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
             }
             android.R.id.home -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.frag_container, MainFragment())
-                    .commit()
+                supportFragmentManager.popBackStack()
                 supportActionBar?.setDisplayHomeAsUpEnabled(false)
             }
         }
