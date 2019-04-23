@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
 
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+//        supportActionBar?.setDisplayShowHomeEnabled(true)
+
         supportFragmentManager.beginTransaction()
                 //TODO: fix params
             .add(R.id.frag_container, MainFragment.newInstance())
@@ -46,7 +49,15 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
                     .beginTransaction()
                     .replace(R.id.frag_container, SettingsFragment())
                     .commit()
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+            }
+            android.R.id.home -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frag_container, MainFragment())
+                    .commit()
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
             }
         }
 
