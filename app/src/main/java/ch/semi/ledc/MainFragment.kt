@@ -1,6 +1,7 @@
 package ch.semi.ledc
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
@@ -14,22 +15,19 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.preference.Preference
+import androidx.preference.PreferenceManager
 
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlin.math.floor
 import kotlin.math.sqrt
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 
 class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener {
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var sharedPreference: SharedPreferences
+
     private var listener: OnFragmentInteractionListener? = null
 
     private fun getTAG(): String { return (activity as MainActivity).getTAG() }
@@ -141,16 +139,20 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        val shutterOn = sharedPreference.getBoolean("shutter", false)
+        val rainbowOn = sharedPreference.getBoolean("rainbow", false)
 
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
+
+        view.shutter_layout.visibility = if(shutterOn) View.VISIBLE else View.GONE
+        view.rainbow_layout.visibility = if(rainbowOn) View.VISIBLE else View.GONE
+        
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -199,6 +201,9 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        if (context is MainActivity){
+            sharedPreference = PreferenceManager.getDefaultSharedPreferences(context)
+        }
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
@@ -219,14 +224,7 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
 
     companion object {
 
-        // TODO: Rename and change types and number of parameters
+        fun newInstance() = MainFragment()
 
-        fun newInstance(/*param1: String?, param2: String?*/) = MainFragment()
-/*            .apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-           }
-*/     }
+     }
 }

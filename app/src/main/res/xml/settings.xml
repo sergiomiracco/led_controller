@@ -1,10 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 
 <androidx.preference.PreferenceScreen
-     xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SwitchPreferenceCompat
-            app:key="notifications"
-            app:title="Enable message notifications"/>
+    <PreferenceCategory
+        app:title="Modules">
 
+        <CheckBoxPreference
+            app:key="shutter"
+            app:title="Shutter"
+            app:defaultValue="true"
+            app:summaryOn="Enabled"
+            app:summaryOff="Disabled"
+        />
+
+        <CheckBoxPreference
+                app:key="rainbow"
+                app:title="Rainbow"
+                app:defaultValue="true"
+                app:summaryOn="Enabled"
+                app:summaryOff="Disabled"
+        />
+
+    </PreferenceCategory>
 
 </androidx.preference.PreferenceScreen>
