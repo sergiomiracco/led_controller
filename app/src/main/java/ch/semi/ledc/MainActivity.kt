@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.PreferenceManager
+
 
 class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionListener {
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionList
 
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
-        //maybe used later with coming um preferences
+        //maybe used later with coming up preferences
 //        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(this)
 
 
