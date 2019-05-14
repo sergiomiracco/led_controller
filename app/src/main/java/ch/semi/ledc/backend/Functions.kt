@@ -2,8 +2,7 @@ package ch.semi.ledc.backend
 
 enum class Functions(val index: Byte) {
 
-    OFF(0),
-    ON(1),
+    ON_OFF(0),
     SHUTTER(2),
     RAINBOW(3);
 

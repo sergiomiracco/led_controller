@@ -8,18 +8,32 @@ import kotlin.experimental.or
 
 class Protocol {
 
-    private var sColor : Color = Color()
+    private var sRed : Byte = 0
+    private var sGreen : Byte = 0
+    private var sBlue : Byte = 0
+
     private var sFunctionByte : Byte = 0b00000000
 
     private val sProtocol : ByteArray = ByteArray(4)
 
     public fun enableFunction(function: Functions){
-        sProtocol[0] = sProtocol[0] or function.getBytePattern()
+        sFunctionByte = sFunctionByte or function.getBytePattern()
     }
 
     public fun disableFunction(function: Functions){
-        sProtocol[0] = sProtocol[0] and function.getBytePattern().inv()
+        sFunctionByte = sFunctionByte and function.getBytePattern().inv()
     }
 
+    public fun setColor(color: Long){
+        TODO("not yet implemented")
+    }
 
+    public fun setColor(red: Byte, green: Byte, blue: Byte){
+
+    }
+
+    public fun switchOff(){
+        disableFunction(Functions.ON_OFF)
+
+    }
 }
