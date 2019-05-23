@@ -61,10 +61,10 @@ class Protocol {
             }
         }
 
-        val colorNames = Array(4){"", "red: ", "green: ", "blue: "}
+        val colorNames = arrayOf("red: ", "green: ", "blue: ")
 
         for(i in 1..3){
-            sb.append(colorNames[i])
+            sb.append(colorNames[i-1])
             val num = sMessage[i]
             sb.append(num.toString())
 
