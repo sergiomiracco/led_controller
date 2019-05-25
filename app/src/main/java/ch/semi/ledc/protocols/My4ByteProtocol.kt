@@ -1,7 +1,6 @@
 package ch.semi.ledc.protocols
 
 import android.graphics.Color
-import ch.semi.ledc.controllers.Functions
 import java.lang.StringBuilder
 import kotlin.experimental.and
 import kotlin.experimental.inv

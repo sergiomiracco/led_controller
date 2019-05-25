@@ -1,7 +1,6 @@
 package ch.semi.ledc.protocols
 
 import android.graphics.Color
-import ch.semi.ledc.controllers.Functions
 
 interface Protocol{
 

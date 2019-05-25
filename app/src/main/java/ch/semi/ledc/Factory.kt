@@ -14,7 +14,7 @@ class Factory {
         "4ByteProtocol" to My4ByteProtocol::class
     )
 
-    fun instantiateDriver(driverName: String, protocolName: String, parameters: Object?): Backend {
+    fun instantiateDriver(driverName: String, protocolName: String, parameters: Any?): Backend {
         TODO("see below")
         // lookup protocol class
         // instantiate protocol object
