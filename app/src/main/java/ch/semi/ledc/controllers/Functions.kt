@@ -1,4 +1,4 @@
-package ch.semi.ledc.backend
+package ch.semi.ledc.controllers
 
 enum class Functions(val index: Byte) {
 

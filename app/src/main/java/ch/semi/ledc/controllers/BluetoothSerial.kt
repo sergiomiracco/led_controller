@@ -1,16 +1,16 @@
-package ch.semi.ledc.backend.interfaces
+package ch.semi.ledc.controllers
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.util.Log
-import ch.semi.ledc.backend.Backend
+import ch.semi.ledc.protocols.Protocol
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.util.*
 
-class BluetoothSerial : Backend {
+class BluetoothSerial(protocol: Protocol) : Backend(protocol) {
 
     // Debugging
     private val TAG = "BLUETOOTH SERIAL"
@@ -29,7 +29,9 @@ class BluetoothSerial : Backend {
         val instance: BluetoothSerial
         get() {
             if (uniqueInstance == null){
-                uniqueInstance = BluetoothSerial()
+                uniqueInstance =
+                TODO("fix instantiation with protocol")
+                //BluetoothSerial()
             }
             return uniqueInstance!!
         }

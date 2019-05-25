@@ -1,13 +1,13 @@
-package ch.semi.ledc.backend
+package ch.semi.ledc.protocols
 
 import android.graphics.Color
-import ch.semi.ledc.backend.Functions
+import ch.semi.ledc.controllers.Functions
 import java.lang.StringBuilder
 import kotlin.experimental.and
 import kotlin.experimental.inv
 import kotlin.experimental.or
 
-class Protocol {
+class My4ByteProtocol : Protocol {
 
     private var sRed : Byte = 0
     private var sGreen : Byte = 0
@@ -17,16 +17,21 @@ class Protocol {
 
     private val sMessage : ByteArray = ByteArray(4)
 
-    public fun enableFunction(function: Functions){
+
+    override fun enableFunction(function: Functions) {
         sFunctionByte = sFunctionByte or function.getBytePattern()
     }
 
-    public fun disableFunction(function: Functions){
+    override fun disableFunction(function: Functions) {
         sFunctionByte = sFunctionByte and function.getBytePattern().inv()
     }
 
-    public fun setColor(color: Long){
-        TODO("not yet implemented")
+    override fun setColor(color: Color) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun dark() {
+        disableFunction(Functions.ON_OFF)
     }
 
     public fun setColor(red: Byte, green: Byte, blue: Byte){
@@ -36,10 +41,6 @@ class Protocol {
 
     }
 
-    public fun switchOff(){
-        disableFunction(Functions.ON_OFF)
-
-    }
 
     public fun getMessage(): ByteArray {
         sMessage[0] = sFunctionByte
@@ -51,7 +52,7 @@ class Protocol {
 
     }
 
-    public override fun toString(): String {
+    override fun toString(): String {
 
         val sb = StringBuilder()
 
@@ -67,7 +68,6 @@ class Protocol {
             sb.append(colorNames[i-1])
             val num = sMessage[i]
             sb.append(num.toString())
-
         }
 
         return sb.toString()

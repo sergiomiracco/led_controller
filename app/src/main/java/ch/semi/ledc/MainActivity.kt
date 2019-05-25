@@ -8,16 +8,17 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 
 
-class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionListener {
+    class MainActivity : AppCompatActivity(), MainFragment.OnFragmentInteractionListener {
 
-    override fun onFragmentInteraction(uri: Uri) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+        override fun onFragmentInteraction(uri: Uri) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
 
-    private val mTAG : String = "COLOR_KOBOLD_LOG"
-    fun getTAG(): String = mTAG
+        private val mTAG : String = "COLOR_KOBOLD_LOG"
+        fun getTAG(): String = mTAG
 
-    private var mCurrentColor = Color.BLACK
+        private var mCurrentColor = Color.BLACK
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
