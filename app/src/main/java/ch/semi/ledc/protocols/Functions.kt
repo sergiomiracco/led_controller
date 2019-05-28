@@ -2,7 +2,8 @@ package ch.semi.ledc.protocols
 
 enum class Functions(val index: Byte) {
 
-    ON_OFF(0),
+    ON_OFF_CH1(0),
+    ON_OFF_CH2(1),
     SHUTTER(2),
     RAINBOW(3);
 

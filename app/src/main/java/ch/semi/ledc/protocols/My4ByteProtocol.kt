@@ -26,20 +26,16 @@ class My4ByteProtocol : Protocol {
     }
 
     override fun setColor(color: Color) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        sRed = color.red().toByte()
+        sGreen = color.green().toByte()
+        sBlue = color.blue().toByte()
+
     }
 
     override fun dark() {
-        disableFunction(Functions.ON_OFF)
+        disableFunction(Functions.ON_OFF_CH1)
+        disableFunction(Functions.ON_OFF_CH2)
     }
-
-    public fun setColor(red: Byte, green: Byte, blue: Byte){
-        sRed=red
-        sGreen=green
-        sBlue=blue
-
-    }
-
 
     public fun getMessage(): ByteArray {
         sMessage[0] = sFunctionByte
