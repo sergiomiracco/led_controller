@@ -3,6 +3,7 @@ package ch.semi.ledc
 import ch.semi.ledc.controllers.Backend
 import ch.semi.ledc.controllers.BluetoothSerial
 import ch.semi.ledc.protocols.My4ByteProtocol
+import ch.semi.ledc.protocols.Protocol
 
 class Factory {
 
@@ -15,6 +16,11 @@ class Factory {
     )
 
     fun instantiateDriver(driverName: String, protocolName: String, parameters: Any?): Backend {
+
+        val protocolType = protocols[protocolName]
+        if (protocolType is Protocol) {
+            val obj = protocolType.objectInstance!!.getInstance()
+        }
         TODO("see below")
         // lookup protocol class
         // instantiate protocol object

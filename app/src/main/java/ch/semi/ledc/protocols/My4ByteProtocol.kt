@@ -16,6 +16,14 @@ class My4ByteProtocol : Protocol {
 
     private val sMessage : ByteArray = ByteArray(4)
 
+    private var singleInstance: My4ByteProtocol? = null
+
+    override fun getInstance(): Protocol {
+        if (singleInstance != null){
+            singleInstance = My4ByteProtocol()
+        }
+        return singleInstance as Protocol
+    }
 
     override fun enableFunction(function: Functions) {
         sFunctionByte = sFunctionByte or function.getBytePattern()
