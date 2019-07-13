@@ -24,4 +24,22 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:title="Peripherial">
+
+        <ListPreference
+            app:key="Devices"
+            app:title="Device">
+
+        </ListPreference>
+
+        <ListPreference
+                app:key="Protocols"
+                app:title="Protocol">
+
+        </ListPreference>
+
+
+    </PreferenceCategory>
+
 </androidx.preference.PreferenceScreen>

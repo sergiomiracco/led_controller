@@ -11,14 +11,17 @@ import kotlin.reflect.full.primaryConstructor
 
 
 class Factory {
+    companion object {
 
-    private val drivers = mapOf<String, KClass<out Backend>>(
-        "RN42-CDB6" to BluetoothSerial::class
-    )
+        val drivers = mapOf<String, KClass<out Backend>>(
+            "RN42-CDB6" to BluetoothSerial::class
+        )
 
-    private val protocols = mapOf<String, KClass<out Protocol>>(
-        "4ByteProtocol" to My4ByteProtocol::class
-    )
+        val protocols = mapOf<String, KClass<out Protocol>>(
+            "4ByteProtocol" to My4ByteProtocol::class
+        )
+
+    }
 
     fun instantiateDriver(driverName: String, protocolName: String, parameters: Any?): Backend? =
         protocols[protocolName]?.createInstance()?.let { proto ->
