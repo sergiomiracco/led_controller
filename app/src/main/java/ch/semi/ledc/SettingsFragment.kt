@@ -25,11 +25,13 @@ class SettingsFragment : PreferenceFragmentCompat(){
         val deviceEntries = Factory.Companion.drivers.keys
         deviceListPreference.entries = deviceEntries.toTypedArray()
         deviceListPreference.entryValues = deviceEntries.toTypedArray()
+        deviceListPreference.setDefaultValue(deviceEntries.elementAt(0))
 
         val protocolListPreference = findPreference("Protocols") as ListPreference
         val protocolEntries = Factory.Companion.protocols.keys
         protocolListPreference.entries = protocolEntries.toTypedArray()
         protocolListPreference.entryValues = protocolEntries.toTypedArray()
+        protocolListPreference.setDefaultValue(protocolEntries.elementAt(0))
 
     }
 
