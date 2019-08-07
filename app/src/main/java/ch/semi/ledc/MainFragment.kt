@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.RippleDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
@@ -129,8 +131,12 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
     override fun onClick(v: View?) {
         when(v) {
             color_btn_1, color_btn_2, color_btn_3 -> {
-                val background = v?.background as ColorDrawable
-                updateColor(background.color)
+                if(v != null){
+                    val bg = v.background
+                    if(bg is ColorDrawable) {
+                        updateColor(bg.color)
+                    }
+                }
             }
         }
     }
