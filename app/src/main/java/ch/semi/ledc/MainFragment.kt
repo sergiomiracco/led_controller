@@ -61,6 +61,10 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
         val touchLocation = floatArrayOf(x, y)
         inverse.mapPoints(touchLocation)
 
+        val density = resources.displayMetrics.density
+        touchLocation[0] /= density
+        touchLocation[1] /= density
+
         return touchLocation
     }
 
@@ -75,7 +79,6 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
             (v as ImageView).imageMatrix.invert(inverse)
 
             val circleCenter = floatArrayOf((v.width / 2).toFloat(), (v.height / 2).toFloat())
-            inverse.mapPoints(circleCenter)
 
             val ccX = x - circleCenter[0]
             val ccY = y - circleCenter[1]
@@ -166,9 +169,12 @@ class MainFragment : Fragment(), View.OnLongClickListener, View.OnClickListener 
                         MotionEvent.ACTION_MOVE, MotionEvent.ACTION_DOWN -> {
 
                             val touchLocation = rectifyTouchLocation(v, m.x, m.y)
+                            if(touchWithinCircle(v, m.x, m.y)){
 
-                            if(touchWithinCircle(v, touchLocation[0], touchLocation[1])){
-
+                                val cxs = rgb_color_circle.left
+                                val cxe = rgb_color_circle.right
+                                val cys = rgb_color_circle.top
+                                val cye = rgb_color_circle.bottom
                                 val x = floor(touchLocation[0]).toInt()
                                 val y = floor(touchLocation[1]).toInt()
 
